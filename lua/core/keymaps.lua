@@ -86,5 +86,10 @@ keymap.set("n", "<leader>hj", "<cmd>HopChar2<cr>") -- hop to pair of letters
 keymap.set("n", "<leader>H", "<cmd>HopWord<cr>") -- hop to all words
 keymap.set("n", "<leader>hl", "<cmd>HopLineStart<cr>") -- hop to line start
 
+-- rust-tools
+keymap.set("n", "<leader>rr", "<cmd>RustRunnables<cr>") -- quicklist of all the runnable options in the open buffer
+keymap.set("n", "<leader>rh", "<cmd>RustHoverActions<cr>") -- open up drop-down of actions at the cursor
+keymap.set("n", "<leader>re", "<cmd>RustExpandMacro<cr>") -- Expand macro under cursot recursively
+
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
