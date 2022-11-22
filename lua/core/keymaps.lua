@@ -13,6 +13,9 @@ keymap.set("i", "jk", "<ESC>")
 -- clear search highlights
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
+-- open up Vim cheatsheet
+keymap.set("n", "gc", ":vsp ~/code/vim-cheatsheet/cheatsheet.txt<cr>:vertical resize 100<cr>")
+
 -- delete single character without copying into register
 keymap.set("n", "x", '"_x')
 
@@ -47,12 +50,41 @@ keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>") -- find string in 
 keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>") -- find string under cursor in current working directory
 keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers in current neovim instance
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
+keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list Todos
 
--- telescope git commands (not on youtube nvim video)
+-- telescope git commands
 keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
 keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
 keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
 keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+-- trouble
+keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle the touble window on/off
+keymap.set("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>") -- open trouble window scoped to workspace
+keymap.set("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>") -- open trouble window scoped to current document
+keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>") -- open quickfix window
+keymap.set("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>") -- open loclist window
+keymap.set("n", "<leader>xt", "<cmd>TodoTrouble<cr>") -- open list of Todos
+
+-- hop
+local hop = require("hop")
+local directions = require("hop.hint").HintDirection
+vim.keymap.set("", "f", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set("", "F", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true })
+end, { remap = true })
+vim.keymap.set("", "t", function()
+  hop.hint_char1({ direction = directions.AFTER_CURSOR, current_line_only = true, hint_offset = -1 })
+end, { remap = true })
+vim.keymap.set("", "T", function()
+  hop.hint_char1({ direction = directions.BEFORE_CURSOR, current_line_only = true, hint_offset = 1 })
+end, { remap = true })
+keymap.set("n", "<leader>hh", "<cmd>HopChar1<cr>") -- hop to single letter
+keymap.set("n", "<leader>hj", "<cmd>HopChar2<cr>") -- hop to pair of letters
+keymap.set("n", "<leader>H", "<cmd>HopWord<cr>") -- hop to all words
+keymap.set("n", "<leader>hl", "<cmd>HopLineStart<cr>") -- hop to line start
 
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary

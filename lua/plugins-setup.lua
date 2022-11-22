@@ -100,6 +100,16 @@ return packer.startup(function(use)
   -- git integration
   use("lewis6991/gitsigns.nvim") -- show line modifications on left hand side
 
+  -- Project structure
+  use("preservim/tagbar")
+
+  -- Trouble
+  use("folke/trouble.nvim") -- see errors, lints, etc in one window
+  use("folke/todo-comments.nvim") -- include todos
+
+  -- hop
+  use({ "phaazon/hop.nvim", branch = "v2" }) -- for hopping around on a page
+
   if packer_bootstrap then
     require("packer").sync()
   end
