@@ -91,5 +91,11 @@ keymap.set("n", "<leader>rr", "<cmd>RustRunnables<cr>") -- quicklist of all the 
 keymap.set("n", "<leader>rh", "<cmd>RustHoverActions<cr>") -- open up drop-down of actions at the cursor
 keymap.set("n", "<leader>re", "<cmd>RustExpandMacro<cr>") -- Expand macro under cursot recursively
 
+-- debugging
+keymap.set("n", "<leader>b", "<cmd>lua require('dap').toggle_breakpoint()<cr>")
+keymap.set("n", "<F5>", "<cmd>lua require('dap').continue()<cr>")
+keymap.set("n", "<F10>", "<cmd>lua require('dap').step_over()<cr>")
+keymap.set("n", "<F11>", "<cmd>lua require('dap').step_into()<cr>")
+
 -- restart lsp server (not on youtube nvim video)
 keymap.set("n", "<leader>rs", ":LspRestart<CR>") -- mapping to restart lsp if necessary
