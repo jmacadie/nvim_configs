@@ -3,6 +3,10 @@ if not rust_tools_status then
   return
 end
 
+local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.8.1/'
+local codelldb_path = extension_path .. 'adapter/codelldb'
+local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
 -- configure rust-tools server with plugin
 rust_tools.setup({
   tools = {
@@ -11,6 +15,12 @@ rust_tools.setup({
     },
   },
   server = {
+    on_attach = function(_, bufnr)
+      -- Hover actions
+      vim.keymap.set("n", "<C-space>", rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+      -- Code action groups
+      vim.keymap.set("n", "<Leader>a", rust_tools.code_action_group.code_action_group, { buffer = bufnr })
+    end,
     settings = { -- Custom settings for rust-tools
       ["rust-analyzer"] = {
         checkOnSave = {
@@ -19,4 +29,7 @@ rust_tools.setup({
       },
     },
   },
+  dap = {
+    adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path)
+  }
 })
