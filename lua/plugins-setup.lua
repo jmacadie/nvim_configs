@@ -113,6 +113,9 @@ return packer.startup(function(use)
   -- hop
   use({ "phaazon/hop.nvim", branch = "v2" }) -- for hopping around on a page
 
+  -- indentation lines
+  use("lukas-reineke/indent-blankline.nvim")
+
   if packer_bootstrap then
     require("packer").sync()
   end
