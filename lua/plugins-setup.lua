@@ -116,6 +116,9 @@ return packer.startup(function(use)
   -- indentation lines
   use("lukas-reineke/indent-blankline.nvim")
 
+  -- git diff
+  use("sindrets/diffview.nvim")
+
   if packer_bootstrap then
     require("packer").sync()
   end

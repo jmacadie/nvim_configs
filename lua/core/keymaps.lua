@@ -52,11 +52,16 @@ keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>") -- list open buffers
 keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>") -- list available help tags
 keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<cr>") -- list Todos
 
--- telescope git commands
-keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
-keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
-keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
-keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+-- telescope git commands (don't use in favour of diffview)
+--keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<cr>") -- list all git commits (use <cr> to checkout) ["gc" for git commits]
+--keymap.set("n", "<leader>gfc", "<cmd>Telescope git_bcommits<cr>") -- list git commits for current file/buffer (use <cr> to checkout) ["gfc" for git file commits]
+--keymap.set("n", "<leader>gb", "<cmd>Telescope git_branches<cr>") -- list git branches (use <cr> to checkout) ["gb" for git branch]
+--keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<cr>") -- list current changes per file with diff preview ["gs" for git status]
+
+-- git diffview commands
+keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>") -- open the history page
+keymap.set("n", "<leader>gd", "<cmd>DiffviewOpen<cr>") -- open the diff page
+keymap.set("n", "<leader>gs", "<cmd>DiffviewOpen --cached<cr>") -- open the staged diff page (i.e. what's going to be committed)
 
 -- trouble
 keymap.set("n", "<leader>xx", "<cmd>TroubleToggle<cr>") -- toggle the touble window on/off
