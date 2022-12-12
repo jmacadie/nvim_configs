@@ -33,3 +33,7 @@ rust_tools.setup({
     adapter = require("rust-tools.dap").get_codelldb_adapter(codelldb_path, liblldb_path),
   },
 })
+
+-- configure rust fmt on save
+vim.g.rustfmt_command = "cargo fmt"
+vim.g.rustfmt_auotsave = 1
